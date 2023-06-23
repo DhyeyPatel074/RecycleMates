@@ -72,11 +72,13 @@ app_ui = ui.page_navbar(
 
     # Map for exploring requests ---------------------------
     ui.nav("Map",
-             ui.input_select(
-                            "basemap", "Choose a basemap",
-                            choices=list(basemaps.keys())
-                            ),
-            output_widget("map")
+             
+                            ui.input_select(
+                                            "basemap", "Choose a basemap",
+                                            choices=list(basemaps.keys())
+                                            ),
+                            output_widget("map")
+             
           ),
     
     
@@ -103,7 +105,8 @@ def server(input: Inputs, output: Outputs, session: Session):
         img = output.image()
         p = predictions(img)
         fig = probability_chart(p)
-        return fig 
+        return fig
+    @output 
     @render_widget
     def map():
         basemap = basemaps[input.basemap()]
