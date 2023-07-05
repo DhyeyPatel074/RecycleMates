@@ -76,5 +76,66 @@ In summary, the EDA process for a recycling app that uses object detection algor
 
 # Application of the Five Ethics Principles
 
+Consent: The application will obtain informed consent from users before collecting and using their personal data. This means that the application will provide clear and transparent information about the types of data that will be collected, how it will be used, and who will have access to it. Users will have the option to opt-in or opt-out of data collection, and they should be able to revoke their consent at any time.
+
+Control: The application will give users a high degree of control over their data. This means that users should be able to control what data is collected, how it is used, and who has access to it. The application will have clear and easy-to-use privacy settings that allow users to manage their data preferences and make informed decisions about how their data is used.
+
+Clarity: The application will be designed to be clear and easy to understand for users. This means that it will provide clear instructions on how to use it, what it does, and what data it collects. The application will also use plain language and avoid technical jargon, so that users of all backgrounds can understand it. Additionally, the application will have a clear and easy-to-access privacy policy that provides detailed information about data collection, usage, and sharing.
+
+Consistency: The application will be designed to operate consistently and reliably. This means that the application will be thoroughly tested before release to ensure that it functions as intended. Additionally, the application will be regularly updated and maintained to ensure that it remains compatible with current operating systems and technologies. It will be designed to minimize errors and reduce the risk of incorrect detections, and users will be notified in the event of an error or malfunction.
+
+Consequences: The application will be designed to minimize negative consequences for users and the environment. This means that the application will be designed to ensure that users are not misled or given inaccurate information about recyclable materials. Additionally, the application will be designed to minimize the risk of false detections or incorrect categorizations, which could lead to waste contamination or damage to recycling facilities. It will also be designed to protect user privacy, by ensuring that user data is stored securely and is not shared with third parties without user consent.
+
+# Performance metrics
+
+Precision: This measures the accuracy of the model's predictions. It is calculated by dividing the number of correctly identified recyclable items by the total number of identified items. A high precision value indicates that the model has few false positives, or items that were identified as recyclable but are not.
+
+Recall: This measures the model's ability to identify all the relevant recyclable items in the dataset. It is calculated by dividing the number of correctly identified items by the total number of recyclable items in the dataset. A high recall value indicates that the model has few false negatives, or items that were not identified as recyclable but are.
+
+F1 Score: This is the harmonic mean of precision and recall. It is used to give equal weight to both precision and recall. A high F1 score indicates that the model is both precise and has a high recall rate.
+
+Mean Average Precision (MAP): This is used to evaluate the accuracy of the model at different thresholds. It is calculated by taking the average of the precision values at different recall levels.
+To ensure that the model is performing well, it is important to evaluate it on a diverse range of data that includes different types of recyclable items, different lighting conditions, and different backgrounds. The model's performance should be evaluated periodically and adjusted as needed to maintain its accuracy.
+
+It is also important to consider the computational resources required to run the object detection algorithm. The size of the dataset and the complexity of the model can greatly impact the computational resources required to run the algorithm. It is important to strike a balance between accuracy and computational efficiency to ensure that the model can run in real-time on mobile devices.
+
+Another important factor to consider is the impact of false positives and false negatives. False positives can result in non-recyclable items being identified as recyclable, which can result in contamination of the recycling stream. False negatives, on the other hand, can result in recyclable items being missed, which can reduce the effectiveness of the recycling program. It is important to minimize both false positives and false negatives to ensure that the model is effective in identifying recyclable items. Here is a Confusion matrix representing false positives and false negatives of the base model:
+
+![image](https://github.com/DhyeyPatel074/RecycleMates/assets/128725424/699fadec-b075-43ba-bc6b-e5536bf2e300)
+
+In conclusion, evaluating the performance of a recycling app that uses object detection algorithms is essential to ensure that the app is accurate and effective. Performance metrics such as precision, recall, F1 score and mAP can be used to evaluate the model's accuracy, and it is important to consider the impact of false positives and false negatives. The computational resources required to run the algorithm should also be considered, and the model's performance should be evaluated periodically to maintain its accuracy.
+
+# Limitations
+
+More images to train the neural network model as they require a lot of pictures to really get high accuracy.
+
+While the recycling app described has numerous benefits, there are also some limitations to consider. One of the biggest limitations is the accuracy of the object detection algorithm. While it has been shown to be effective in identifying and categorizing items, there is still room for error. For example, the algorithm may have difficulty differentiating between two similar-looking items, such as a plastic water bottle and a sports drink bottle. This could result in inaccurate pricing suggestions or misclassification of recyclables. Another limitation of the app is the reliance on user-generated content. While this is a key feature that allows users to post ads for their recyclables, it also means that the quality and accuracy of the information provided can vary. Users may not always provide accurate descriptions or pricing suggestions for their recyclables, which could impact the effectiveness of the app in connecting pickers with recyclers.
+
+Another potential limitation is the need for a reliable internet connection. Without a stable and fast internet connection, users may have difficulty accessing the app, uploading photos, or receiving notifications about new ads. This could limit the app's effectiveness, particularly in areas with poor internet connectivity or in regions where access to mobile data is limited. The app may also face challenges in terms of user adoption and engagement. While there is a growing interest in sustainability and recycling, not all users may be willing or able to use the app. Some users may prefer to recycle through more traditional means, such as taking their recyclables directly to a recycling center. Others may be hesitant to use the app due to concerns about privacy or security.
+
+In addition, the app may face challenges in terms of scaling and sustainability. As the app becomes more popular and attracts a larger user base, there may be increased demands on the server infrastructure and technical support. This could require significant investments in technology and personnel to maintain and scale the app. Furthermore, the app's effectiveness may be limited by regulatory or policy factors. For example, some areas may have restrictions on the types of recyclables that can be collected or the prices that can be offered for recycling. These regulations may vary by region or country, which could impact the app's ability to function effectively in certain areas.
+
+Finally, the app may face challenges in terms of financial sustainability. While the app's revenue model is based on a percentage of the transaction fees between the pickers and recyclers, it may take time for the app to attract a large enough user base to generate significant revenue. In the meantime, the app may require ongoing investments in marketing, technology, and personnel to continue operating.
+
+In conclusion, while the recycling app has the potential to revolutionize the way we recycle, it is important to consider the potential limitations and challenges. By understanding and addressing these limitations, we can work towards building a more effective and sustainable recycling app that benefits both individuals and the environment.
+
+# Conclusion
+
+With the increasing population and consumerism, it is important to develop sustainable ways of handling waste, and this app provides a convenient way for people to recycle and earn some money in the process.
+
+The development process of the app involves data collection, cleaning, processing, and analysis. The data collection process involves obtaining images of the recyclable materials that will be used to train the object detection algorithm. The images are collected from different sources and labeled accordingly to ensure the algorithm learns to recognize the objects accurately.
+
+Cleaning and processing the data involve removing any noise or irrelevant information that may hinder the algorithm's accuracy. This process also involves resizing the images to a standard size and converting them to the appropriate format for training. The cleaned and processed data is then used to train the object detection algorithm, which is an essential step in ensuring that the app can accurately recognize the recyclable materials.
+
+The app's user interface is designed to be user-friendly, making it easy for users to take pictures of the recyclable materials and post them on the app. The app's backend processes the images using the object detection algorithm and provides users with an estimated recycling price based on the number of items in the picture. Pickers, who are another type of user, are notified of the ad posted about the recycling item along with the price in their near me locations, which enables them to collect the recyclables and take them to the nearest recycling place to earn money.
+
+The performance metrics of the app are evaluated based on various factors such as accuracy, speed, and ease of use. The accuracy of the app's object detection algorithm is crucial in ensuring that the recyclable materials are recognized correctly. The speed of the app is also essential, as users want a fast and efficient experience when using the app. The app's ease of use is another important performance metric, as users want a simple and straightforward app that is easy to navigate.
+
+The app's limitations include the accuracy of the object detection algorithm, which may be affected by various factors such as lighting, angle, and distance. The app's performance may also be limited by the quality of the images posted by users. Additionally, the app's effectiveness may be limited by the availability of pickers to collect the recyclables.
+
+In conclusion, the development of a recycling app that uses object detection algorithms to recognize recyclable materials provides a convenient and sustainable solution to the growing waste problem. The app's user interface is designed to be user-friendly, making it easy for users to recycle and earn some money in the process. The app's performance metrics are evaluated based on accuracy, speed, and ease of use, and its limitations include the accuracy of the object detection algorithm, the quality of the images posted, and the availability of pickers.
+
+Overall, the development of the recycling app provides a great opportunity to contribute to the reduction of waste and the promotion of sustainable living. With further improvements in the app's performance and increased awareness, it has the potential to revolutionize waste management and promote a cleaner and healthier environment.
+
 
 
