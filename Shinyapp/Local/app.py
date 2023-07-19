@@ -5,13 +5,14 @@ import matplotlib.pyplot as plt
 #from PIL import Image, ImageOps
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shiny.types import FileInfo, ImgData, SilentException
+import folium
 
 
 # Request tab
 import tensorflow as tf
 
 # Recreate the exact same model, including its weights and the optimizer
-new_model = tf.keras.models.load_model('model_2_94p.h5')
+new_model = tf.keras.models.load_model('D:\SEM 3\Project\RecycleMates\Shinyapp\Local\model.h5')
 
 def predictions(image):
      img_array = tf.keras.preprocessing.image.img_to_array(image) # convert the image to an NumPy array
@@ -20,7 +21,6 @@ def predictions(image):
      probabilities = new_model.predict(reshaped_image)
      probabilities = np.round(probabilities[0,:],4 ) * 100
      return probabilities
-
 
 
 # Map tab
@@ -65,10 +65,15 @@ app_ui = ui.page_navbar(
                                                         # This tells it to use the phone's rear camera. Use "user" for the front camera.
                                                         capture="environment",
                                                         ),
+                                        ui.input_numeric("x", "Latitude", value=100),
+                                        ui.input_numeric("y", "Longitude", value=100),
                                         ui.output_image("image"),
+                                        ui.output_text_verbatim("txt1"),
+                                        ui.output_text_verbatim("txt2"),
                                        ),
                        ui.panel_main(
                                         ui.output_plot("plot1", click=True, dblclick=True, hover=True, brush=True),
+                                        
                                     ),
                    ),
           ),
@@ -121,13 +126,25 @@ def server(input: Inputs, output: Outputs, session: Session):
         for i, value in enumerate(p):
            fig = plt.text(i, value, str(value) + "%", ha='center', va='bottom')
         return fig
+    
+    @output
+    @render.text
+    def txt1():
+        return f"Latitude: {input.x()}"
+    
+    @output
+    @render.text
+    def txt2():
+        return f"Longitude: {input.y()}"
 
     # Map Tab
     @output 
     @render_widget
     def map():
         basemap = basemaps[input.basemap()]
-        return L.Map(basemap=basemap, center=[42.297471, -83.008058], zoom=9)
-
+        m = L.Map(basemap=basemap, center=[42.297471, -83.008058], zoom=9)
+        marker = L.Marker(location=[42.297471, -83.008058], draggable=False)
+        m.add_layer(marker)
+        return m
 
 app = App(app_ui, server)
