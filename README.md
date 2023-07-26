@@ -3,6 +3,25 @@ This research focuses on developing an image-based classification system for rec
 
 ![image](https://github.com/DhyeyPatel074/RecycleMates/assets/128725424/0403d9bf-cebc-4ad7-a1d1-955e64f46000)
 
+
+
+## Table of content
+- [Vision](##-🔭-vision)
+- [Problem Statement](##-🪨-problem-statement)
+- [Proposed Solution](##-💎-proposed-solution)
+- [Dataset](##-💾-dataset)
+   - [Data Source ](###-data-source )
+   - [Preprocessing](###-preprocessing)
+- [Methods of Analysis](##-🪄-methods-of-analysis)
+   - [Model Results](###-model-results)
+   - [Shiny for Python](###-shiny-for-python)
+- [Conclusion](##-🥁-conclusion)
+- [Future Enhancements](##-🛠️-future-enhancements)
+- [Re-Create Steps](##-🖇️-re-create-steps)
+- [References](##-📄-references)
+- [Contributors](##-⚙️-contributors)
+
+
 -------------------------------------------------------------------------------------------------------------
 ## 🔭 Vision
 
@@ -26,14 +45,14 @@ To address this issue, our research aims to develop an image-based classificatio
 Unlike traditional approaches that handle multiple items simultaneously, our methodology concentrates on classifying one object at a time, ensuring greater precision and simplifying the classification process. The motivation behind this research arises from the growing waste diversion rate and the urgency to improve recycling efforts. By automating the classification process and focusing on the specified items, we envision contributing significantly to Windsor's recycling rate enhancement and fostering a more sustainable, eco-friendly community. 
 
 -------------------------------------------------------------------------------------------------------------
-## 💾 Dataset 
+## 💾 Dataset
 
 Our research mainly focuses on the classification of Plastic Bottles, Glass Bottles, Cans, and Cardboard of no specific shape or color. The dataset was compiled using various sources from Kaggle, along with additional images captured by team members using their smartphone devices. The combination of data from Kaggle and self-taken images ensures a diverse and comprehensive dataset for our research. The combined dataset provided a total of 5,520 images used for the analysis. 
 
 ![image](https://github.com/DhyeyPatel074/RecycleMates/assets/128725424/16af60fa-3b6d-45a2-84cd-b7888d507239)
 
 -------------------------------------------------------------------------------------------------------------
-### Data source 
+### Data Source 
 
 
 | Dataset | Provided by | Source
@@ -50,14 +69,13 @@ Our research mainly focuses on the classification of Plastic Bottles, Glass Bott
 In our research, we took great care to avoid using repetitive images during dataset preprocessing to mitigate the risk of overfitting in our model. Our primary objective was to prevent the model from memorizing the training data excessively, as overfitting can lead to poor generalization on new data. By ensuring that the model focuses on learning essential patterns and features rather than memorizing specific examples, we aimed to enhance its ability to make accurate predictions on unseen data. This approach yielded a more robust and reliable model that exhibited improved performance beyond the training set.  
 
 -------------------------------------------------------------------------------------------------------------
-### Number of images by class
+#### Number of images by class
 
 
 ![image](https://github.com/DhyeyPatel074/RecycleMates/assets/128725424/35fdb9cc-1da8-4495-8ad9-0ca69af1f2e5)
 
 -------------------------------------------------------------------------------------------------------------
-### Sample of the data
-
+#### Sample of the data
 
 ![image](https://github.com/DhyeyPatel074/RecycleMates/assets/128725424/031129bf-c767-4a50-bc7a-7a0aa38f6b89)
 ![image](https://github.com/DhyeyPatel074/RecycleMates/assets/128725424/637cbbf3-ce66-4667-b117-381606c28b40)
@@ -79,7 +97,7 @@ In addition to the aforementioned approach, the report also provides a concise o
 3. Pandas: A powerful data manipulation library, that facilitates data cleaning, aggregation, and exploration. 
 4. PIL / Pillow: Employed for image processing tasks, such as loading, resizing, and converting images. 
 
-### Model results
+### Model Results
 
 During the development of our object classification application, we performed extensive experimentation with various CNN models, each having different numbers of CNN layers. After rigorous evaluation, we identified the best-performing model, which achieved an impressive accuracy of 94% on the validation dataset. This model was deemed highly suitable for our application's prototype. With the chosen CNN model in place, we proceeded to integrate it into our object classification system. The results were remarkable, demonstrating a significantly high level of accuracy in classifying objects into four distinct categories: glass bottles, tin cans, plastic bottles, and cardboard.  
 
