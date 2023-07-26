@@ -149,7 +149,12 @@ Overall, this application is designed to be user-friendly and intuitive, caterin
 
 -------------------------------------------------------------------------------------------------------------
 ## 🥁 Conclusion
-
+* Businesses can make data-driven choices with model insights.
+* Engaging with recycling facilities boosts sustainability impact.
+* The interface allows users to validate classifications.
+* RecyclingMates' CNN model achieves 94% accuracy, enhancing recycling efforts.
+* Increasing the number of samples for the "cardboard" class in the dataset.
+* The model evolves to match changing recycling trends.
 
 -------------------------------------------------------------------------------------------------------------
 ## 🛠️ Future Enhancements
