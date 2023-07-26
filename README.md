@@ -154,6 +154,14 @@ Overall, this application is designed to be user-friendly and intuitive, caterin
 -------------------------------------------------------------------------------------------------------------
 ## 🛠️ Future Enhancements
 
+* Enable simultaneous classification of multiple recyclable objects for increased versatility.
+* Regularly update CNN models using transfer learning and additional data for adaptability.
+* Develop a user-friendly app for on-the-go object classification and environmental awareness.
+* Collaborate on AI-powered bins for automated sorting based on RecyclingMates' results.
+* Optimize recycling facilities with RecyclingMates' AI integration.
+* Foster recycling awareness through partnerships and educational initiatives.
+* Provide data-driven insights into recycling habits and trends.
+* Offer multi-language support for global accessibility.
 
 -------------------------------------------------------------------------------------------------------------
 ## 🖇️ Re-Create Steps
