@@ -10,16 +10,16 @@ This research focuses on developing an image-based classification system for rec
 - [Problem Statement](#-problem-statement)
 - [Proposed Solution](#-proposed-solution)
 - [Dataset](#-dataset)
-   - [Data Source ](##-data-source )
-   - [Preprocessing](##-preprocessing)
+   - [Data Source ](#data-source )
+   - [Preprocessing](#preprocessing)
 - [Methods of Analysis](#-methods-of-analysis)
-   - [Model Results](##-model-results)
-   - [Shiny for Python](##-shiny-for-python)
+   - [Model Results](#model-results)
+   - [Shiny for Python](#shiny-for-python)
 - [Conclusion](#-conclusion)
 - [Future Enhancements](#-future-enhancements)
 - [Re-Create Steps](#%EF%B8%8F-re-create-steps)
 - [References](#-references)
-- [Contributors](#-contributors)
+- [Contributors](#%EF%B8%8F-contributors)
 
 
 -------------------------------------------------------------------------------------------------------------
