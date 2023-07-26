@@ -6,10 +6,10 @@ This research focuses on developing an image-based classification system for rec
 
 
 ## Table of content
-- [Vision](##-vision)
-- [Problem Statement](##-🪨-problem-statement)
-- [Proposed Solution](##-💎-proposed-solution)
-- [Dataset](##-💾-dataset)
+- [Vision](#-vision)
+- [Problem Statement](#-problem-statement)
+- [Proposed Solution](#-proposed-solution)
+- [Dataset](#-dataset)
    - [Data Source ](###-data-source )
    - [Preprocessing](###-preprocessing)
 - [Methods of Analysis](##-🪄-methods-of-analysis)
