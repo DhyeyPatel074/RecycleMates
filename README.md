@@ -26,7 +26,7 @@ To address this issue, our research aims to develop an image-based classificatio
 Unlike traditional approaches that handle multiple items simultaneously, our methodology concentrates on classifying one object at a time, ensuring greater precision and simplifying the classification process. The motivation behind this research arises from the growing waste diversion rate and the urgency to improve recycling efforts. By automating the classification process and focusing on the specified items, we envision contributing significantly to Windsor's recycling rate enhancement and fostering a more sustainable, eco-friendly community. 
 
 -------------------------------------------------------------------------------------------------------------
-## Dataset 
+## 💾 Dataset 
 
 Our research mainly focuses on the classification of Plastic Bottles, Glass Bottles, Cans, and Cardboard of no specific shape or color. The dataset was compiled using various sources from Kaggle, along with additional images captured by team members using their smartphone devices. The combination of data from Kaggle and self-taken images ensures a diverse and comprehensive dataset for our research. The combined dataset provided a total of 5,520 images used for the analysis. 
 
@@ -65,7 +65,7 @@ In our research, we took great care to avoid using repetitive images during data
 
 
 -------------------------------------------------------------------------------------------------------------
-## Methods of Analysis
+## 🪄 Methods of Analysis
 
 
 In this research, the methodology comprises two key stages: system design and Testing, and model development. The first stage involves designing the system to outline the overall approach and Performing thorough testing through the application to assess its functionality and performance.  
@@ -130,23 +130,23 @@ The "Map" section provides an interactive experience, allowing users to choose d
 Overall, this application is designed to be user-friendly and intuitive, catering to a wide range of users, regardless of their technical expertise. It enables users to easily classify objects in images, understand the prediction results, and visualize the geographical locations related to the images. The simplicity and functionality of the Shiny framework make it an excellent choice for developing such interactive data visualization apps. 
 
 -------------------------------------------------------------------------------------------------------------
-## Conclusion
+## 🥁 Conclusion
 
 
 -------------------------------------------------------------------------------------------------------------
-## Future Enhancements
+## 🛠️ Future Enhancements
 
 
 -------------------------------------------------------------------------------------------------------------
-##  Re-Create Steps
+## 🖇️ Re-Create Steps
 
 
 -------------------------------------------------------------------------------------------------------------
-## References
+## 📄 References
 
 
 -------------------------------------------------------------------------------------------------------------
-## Contributors
+## ⚙️ Contributors
 
 
 All participants in this project are Students of Post Graduate Diploma in Data Analytics for Business @ St Clair College
