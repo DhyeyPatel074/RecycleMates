@@ -17,7 +17,7 @@ This research focuses on developing an image-based classification system for rec
    - [Shiny for Python](##-shiny-for-python)
 - [Conclusion](#-conclusion)
 - [Future Enhancements](#-future-enhancements)
-- [Re-Create Steps](#-re-create-steps)
+- [Re-Create Steps](#%EF%B8%8F-re-create-steps)
 - [References](#-references)
 - [Contributors](#-contributors)
 
