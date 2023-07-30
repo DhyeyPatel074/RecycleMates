@@ -1,0 +1,304 @@
+---
+title: Image-Based Classification for Recycling Objects
+authors:
+  - name: Alejandro Rodriguez Orama
+    department: Data Analytics for Business
+    affiliation: St. Clair College
+    location: Windsor, Ontario
+    email: AR156@myscc.ca
+  - name: Arzitha Rachakonda
+    department: Data Analytics for Business
+    affiliation: St. Clair College
+    location: Windsor, Ontario
+    email: AR123@myscc.ca
+  - name: Dhyey Shaileshkumar Patel
+    department: Data Analytics for Business
+    affiliation: St. Clair College
+    location: Windsor, Ontario
+    email: NN141@myscc.ca
+  - name: Nelson Nwachia
+    department: Data Analytics for Business
+    affiliation: St. Clair College
+    location: Windsor, Ontario
+    email: DP250@myscc.ca
+abstract: |
+  Recycling plays a pivotal role in sustainable waste management and environmental preservation. However, increasing recycling challenges demand more efficient solutions. In this research, we propose a two-stage process to develop a Convolutional Neural Network (CNN) model for image-based recycling object classification, focusing on cardboard, can, glass bottles, and plastic bottles. The CNN model's evolution led to a final architecture with a remarkable 94% accuracy on the validation dataset. Subsequently, we integrated the CNN model into an interactive Shiny for Python application, providing users with a user-friendly interface to classify objects and explore nearby recycling locations on a map. This innovative solution aims to revolutionize recycling efforts, foster environmental consciousness, and contribute to Windsor's sustainable waste management.
+keywords:
+  - Recycling
+  - Convolutional Neural Network
+  - Image Classification
+  - Sustainability
+  - Waste Management
+  - Shiny for Python
+  - Environmental Conservation
+  - Recycling Object
+  - AI-based Solution
+  - User-friendly Application
+  - Waste Sorting
+bibliography: capstone.bib
+biblio-style: unsrt
+output: 
+  rticles::arxiv_article:
+    number_sections: true
+    toc: true
+    toc_depth: 3
+header-includes:
+  - \usepackage{floatrow}
+---
+
+\newpage
+# Introduction
+
+Recycling plays a crucial role in promoting sustainable waste management practices and mitigating environmental issues. However, with escalating recycling challenges, the need for efficient solutions has become evident [@canada_get_2021; @canada_plastic_2021; @canada_zero_2021, @canada_canadas_2021]. The city of Windsor faces a pressing concern regarding the increasing number of unsolved recycling requests [@noauthor_recycling_nodate], resulting in a surge in waste collection demands annually. To address this issue, our research aims to develop an image-based classification system for recycling objects, with a specific focus on four key items: cardboard, tin, glass, and plastic bottles. Utilizing Convolutional Neural Networks (CNNs), our primary objective is to enhance waste sorting accuracy and efficiency through automated object classification [@noauthor_8_nodate, @noauthor_14_nodate; @noauthor_autonomous_nodate].  
+
+Unlike traditional approaches that handle multiple items simultaneously, our methodology concentrates on classifying one object at a time, ensuring greater precision and simplifying the classification process. The motivation behind this research arises from the growing waste diversion rate and the urgency to improve recycling efforts. By automating the classification process and focusing on the specified items, we envision contributing significantly to Windsor's recycling rate enhancement and fostering a more sustainable, eco-friendly community.  
+
+Through this paper, we aim to shed light on the challenges faced by Windsor and provide a practical and innovative solution to enhance waste management efficiency. Embracing technological advancements, we aspire to pave the way for a greener future, where recycling practices play a pivotal role in mitigating environmental impact and promoting long-term sustainability.  
+
+# Related works
+
+The global challenge of waste pollution and its detrimental impact on the environment has compelled researchers and innovators to explore novel solutions utilizing cutting-edge technologies. Artificial Intelligence (AI) and Deep Learning, in particular, have emerged as powerful tools in waste detection and classification, offering promising avenues to combat waste pollution and improve recycling practices. In this section, we present a review of three notable articles that delve into the application of AI and Deep Learning techniques for waste management. Each article showcases distinctive approaches, ranging from open-source frameworks for litter detection to hardware-based solutions for garbage segregation. By harnessing the potential of AI and Deep Learning, these studies aim to contribute to a more sustainable and environmentally conscious future. Let us delve into the details of these remarkable contributions in waste management and explore the advancements made in addressing the pressing global issue of waste pollution.
+
+- "Waste Detection in Pomerania: Non-Profit Project for Detecting Waste in Environment" [@majchrowska_waste_2021]
+This research presents a comprehensive investigation into the application of Artificial Intelligence (AI) for waste detection and classification to combat waste pollution. The authors developed an open-source framework employing two neural networks to detect and classify litter into seven categories, including bio, glass, metal, plastic, non-recyclable, paper, and unknown. The achieved average precision of up to 70% in waste detection and approximately 75% classification accuracy on the test dataset highlights the framework's effectiveness in waste management. The publicly available code further enhances the potential for wider implementation.
+
+- "A Deep Learning Approach Based Hardware Solution to Categorise Garbage in Environment" [@gupta_deep_2022]
+Addressing the challenges of garbage detection and disposal in urban planning, this paper introduces the SmartBin, a hardware solution for garbage segregation based on deep learning architecture. The system utilizes a Convolutional Neural Network (CNN) to classify garbage into biodegradable and non-biodegradable categories. The study compares the performance of various pre-trained CNN models, including AlexNet, ResNet, VGG-16, and InceptionNet, for garbage classification. The proposed hardware components, such as PiCam, raspberry pi, and infrared sensors, facilitate efficient garbage detection within the bin. Notably, the InceptionNet model demonstrated superior performance with an accuracy of 98.15% for the training set and 96.23% for the validation set.
+
+- "Improvement of Plastic Recycling by Image Processing and Machine Learning" [@noauthor_improvement_2022]
+Recognizing the ubiquity of plastics in modern life and the significant environmental impact caused by their improper disposal, this research seeks to enhance plastic recycling through image processing and machine learning. The study addresses the pressing issue of plastic pollution, which affects various ecosystems and poses risks to wildlife and human health. By leveraging image processing and machine learning techniques, the authors aim to improve plastic recycling rates, redirecting more plastics away from landfills and the environment. The research highlights the urgency of tackling plastic pollution and explores the potential of advanced technologies to contribute to a more sustainable and eco-friendly future.
+
+# Data
+
+Our research mainly focuses on the classification of Plastic Bottles, Glass Bottles, Cans, Cardboard of no specific shape or color. The main reason of focusing in those object is that there is some refounding programs [@noauthor_returning_nodate] in Canada that allows people get redounds from these items if they returned back to the deposit availables. The dataset was compiled using various sources from Kaggle, the combination of data from Kaggle ensures a diverse and comprehensive dataset for our research.The combined dataset provided a total of 5,520 images used for the analysis.  
+
+Table: Data source description.
+
+| Dataset | Provided by | Source
+|-|-|-|
+| Plastic - Paper - Garbage Bag Synthetic Images | Marionette | [Kaggle[1]](https://www.kaggle.com/datasets/vencerlanz09/plastic-paper-garbage-bag-synthetic-images)  |
+| Garbage Classification (12 classes) | Mostafa Mohamed | [Kaggle[2]](https://www.kaggle.com/datasets/mostafaabla/garbage-classification )  |
+| Drinking Waste Classification | Arkadiy Serezhkin | [Kaggle[3]](https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification )  |
+| Alcohol Bottle Images - Glass Bottles | Data Cluster Labs | [Kaggle[4]](https://www.kaggle.com/datasets/dataclusterlabs/alcohol-bottle-images-glass-bottles )  |
+| Waste Classification data | Sashaank Sekhar  | [Kaggle[5]](https://www.kaggle.com/datasets/techsash/waste-classification-data )  |  
+
+## Preprocessing
+
+In our research, we took great care to avoid using repetitive images during dataset preprocessing to mitigate the risk of overfitting in our model. Our primary objective was to prevent the model from memorizing the training data excessively, as overfitting can lead to poor generalization on new data. By ensuring that the model focuses on learning essential patterns and features rather than memorizing specific examples, we aimed to enhance its ability to make accurate predictions on unseen data. This approach yielded a more robust and reliable model that exhibited improved performance beyond the training set.  
+
+The next step involved manual sorting and annotation of images obtained from various sources. Since each dataset contained different categories of images, we focused solely on the relevant categories, namely cardboard, plastic, can, and glass bottles. By sorting the images according to these categories, we ensured that the model received a well-organized and coherent dataset for training. Subsequently, we performed a thorough filtering process to eliminate images that could potentially disrupt the training process. This included the removal of images with prominent watermarks, disoriented objects, clip arts, and other such irrelevant elements. By eliminating these distractions, we aimed to create a clean and representative dataset that would facilitate the model's ability to learn the essential features of the specified categories, ultimately leading to more accurate and effective predictions.  
+
+\newpage
+### Sample of the data
+
+The following figures represent a sample of each of the classes from the dataset that was used to train the model.  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/datasample1.png}
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/datasample2.png}
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/datasample3.png}
+\caption{Data Sample (c). Here we can see from left to right some pictures of can, cardboard, glass bottle and plastic bottle that were used to train the model.}
+\end{figure}
+
+To provide a comprehensive overview of the number of images we are using as a dataset, we have compiled a chart that illustrates the division of the data into four distinct classes: glass bottles, plastic bottles, cardboard, and cans. As shown in the chart, the dataset exhibits a slight imbalance, particularly towards the plastic bottles class. This imbalance may potentially introduce some bias during the model's training process.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/barchart object classes.png}
+\caption{Data count by object classes. Number of images by object classes: This bar chart represents the count of images for each class. There are 1,637 pictures of plastic bottles, 1,448 pictures of glass bottles, 1,414 pictures of cans, and 1021 pictures of cardboard.}
+\end{figure}
+
+# Methodology
+
+This project will be developed in a two-stage process. The first stage will focus on the creation of a robust Convolutional Neural Network (CNN) model, which will play a central role in accurately classifying images of the target objects for recycling. Leveraging state-of-the-art deep learning techniques, we will ensure that the CNN model exhibits high accuracy and efficiency in its classification abilities.  
+
+Moving to the second stage, our primary objective will be the development of an intuitive and user-friendly application that seamlessly integrates the previously created CNN model. Users will find it effortless to upload images of recyclable items through the app's interface. Once uploaded, the CNN model will swiftly classify the objects depicted in the images. This streamlined process will encourage increased participation in recycling efforts, fostering a more environmentally conscious community.  
+
+In addition to the CNN-based classification system, the application will encompass mapping features that allow users to report the location of recyclable objects on a map. By mapping the locations of recyclables, we aim to create a visual representation of recycling hotspots within the city, aiding in the optimization of future recycling collection routes.  
+
+Furthermore, the application will identify and display the nearest deposit refund locations for users to conveniently receive their refunds. By incentivizing recycling through the ease of obtaining refunds, we anticipate a positive impact on the overall recycling rate in the community. This user-centric approach will contribute to a sense of accomplishment and reward for individuals participating in the recycling process, promoting sustained engagement and long-term commitment to recycling practices.  
+
+## CNN model
+The implementation of various Machine Learning models and methods for image classification tasks are presented. The primary goal is to classify recycled-based objects in the dataset. The study explores different techniques to achieve the highest level of accuracy for the models, like data augmentation, dropout layers and regularizations.  
+
+The development of the final CNN model involved the implementation of various techniques to achieve a high level of accuracy suitable for deployment. The decision not to utilize a pretrained CNN model was driven by the desire to explore different architectures independently and investigate how various techniques could influence the model's accuracy. Through meticulous experimentation and analysis, the chosen approach allowed us to gain valuable insights into the impact of these techniques on the performance of the model.  
+
+**First Model (Baseline Model):**  
+
+This model is a simple CNN with a single convolutional layer, followed by max-pooling, flattening, and two dense layers. It uses the categorical cross-entropy loss and the RMSprop optimizer for training.
+
+**Second Model:**  
+
+The second model is a deeper CNN with multiple convolutional layers, max-pooling, and dropout layers. It has a higher number of trainable parameters compared to the baseline model. The model is compiled with the Adam optimizer.
+
+The accuracy of the models demonstrated a notable improvement throughout their evolution. The first model, a baseline CNN architecture consisting of convolutional and dense layers, achieved an accuracy of 56% on the validation dataset. Seeking enhancement, the second model was introduced, featuring a more intricate architecture with additional convolutional, max-pooling, and dropout layers. Consequently, this model exhibited considerable progress, attaining an accuracy of 71% on the validation dataset. 
+
+**Final Model:**  
+
+The final model is a deep Convolutional Neural Network (CNN) architecture with multiple layers that efficiently and accurately classifies images of target objects for recycling. To further optimize performance, the final model was developed, incorporating a more complex and deep CNN structure, comprising multiple convolutional, max-pooling, and dropout layers. Additionally, data augmentation techniques, such as rotation, shifting, and flipping, were implemented to augment the training dataset and enhance model generalization. As a result of these refinements, the third model achieved a significant leap in accuracy, reaching an impressive 94% on the validation dataset.
+
+The architecture starts with a series of convolutional layers, which act as feature extractors, followed by max-pooling layers that downsample the feature maps, reducing computational complexity while preserving essential information. The dropout layers introduce regularization, preventing overfitting and enhancing the model's generalization ability. These layers play a crucial role in ensuring the model's robustness and ability to generalize to new, unseen data.
+
+Additionally, the model includes fully connected dense layers towards the end of the architecture. These dense layers perform the final classification, mapping the learned features from the convolutional layers to the target classes. The use of multiple dense layers further enhances the model's ability to learn complex patterns and relationships within the data.
+
+Furthermore, data augmentation techniques were applied during the training process, augmenting the training dataset with modified versions of the original images. This approach increases the diversity of training examples, reducing the risk of overfitting and enhancing the model's ability to generalize well to real-world scenarios.
+
+The final model was trained with a batch size of 128 and over 100 epochs, using the Adam optimizer with a learning rate of 0.001. The implementation of early stopping and learning rate reduction callbacks ensured efficient training, preventing overfitting and optimizing convergence.
+
+Overall, the final CNN model exhibits outstanding accuracy, reaching 94% on the validation dataset. Its impressive performance is attributed to the carefully designed architecture, deep layers, regularization techniques, and data augmentation strategies. As a result, the final model proves to be a powerful tool for precise and efficient classification of recyclable objects, contributing to the success of the RecyclingMates project in promoting sustainability and environmental consciousness.
+
+### Results
+
+**Loss function.**  
+
+The loss function calculates the difference between the predicted output (the model's prediction) and the actual target output (the ground truth) for a given set of input data. The goal of training a neural network is to minimize this difference, or the "loss," as much as possible.  
+
+A chart is presented, showing the values of the loss function for the training and validation datasets. The chart indicates that the values remain consistently close to each other throughout the training process.  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/Loss function.png}
+\caption{Loss function.}
+\end{figure}
+
+\newpage
+**Training and validation accuracy.**  
+
+Training and validation accuracy are essential performance metrics used in the training and evaluation of machine learning models, especially in neural networks. They provide insights into how well the model is learning from the training data and how well it generalizes to new, unseen data.  
+
+As observed in the chart, the training and validation accuracy remained consistently close to each other throughout the 100 epochs during which the model was trained. This remarkable proximity between the training and validation accuracy indicates that the model effectively avoided overfitting.  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/accuracy function.png}
+\caption{Training and Validation Accuracy.}
+\end{figure}
+
+**Precision.**  
+
+Precision is a measure of the model's accuracy in predicting true positive samples compared to all positive predictions it made for a specific class. In other words, it indicates how many of the predicted positive samples were correct.
+
+- Plastic Bottle class: The model achieved the highest precision of 98% for the "Plastic Bottle" class. This indicates that when the model predicted an image as a "Plastic Bottle," it was correct 98% of the time.
+- Can class: The model achieved a precision of 91%. This means that when the model predicted an image as a "Can," it was correct 91% of the time.
+- Cardboard class: The precision for the "Cardboard" class is 88%, indicating that the model made accurate predictions for this class with an 88% accuracy rate.
+- Glass Bottle class: The precision for the "Glass Bottle" class is also 88%, implying that the model made correct predictions for this class with an 88% accuracy rate.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/Precision.png}
+\caption{Model Precision. The model achieved the highest precision for the"plastic bottle" class with 98\%, followed by "can" with 91\%, and "glass bottle" and "cardboard" with 88\% respectively.}
+\end{figure}
+
+
+**Recall.**  
+
+Also known as sensitivity or true positive rate, measures the model's ability to correctly identify all positive samples of a specific class out of the total number of samples in that class.
+
+- "Can" class: The model achieved a recall of 94% for the "Can" class. This means that the model correctly identified 94% of the samples that actually belonged to the "Can" class.  
+- "Glass Bottle" class: The recall for the "Glass Bottle" class is 94%, implying that the model correctly identified 94% of the samples in the "Glass Bottle" class.  
+- "Plastic Bottle" class: The recall for the "Plastic Bottle" class is 94%, indicating that the model correctly identified 94% of the samples in the "Plastic Bottle" class.  
+- "Cardboard" class: The recall for the "Cardboard" class is 80%, indicating that the model identified 80% of the samples in the "Cardboard" class correctly.  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/recall.png}
+\caption{Model Recall. The model achieved the highest recall for the "can," "glass bottle," and "plastic bottle" classes, all with 94\%, and the cardboard class got an 80\%.}
+\end{figure}
+**F1-score.**  
+
+The F1-score is the harmonic mean of precision and recall and provides a balanced measure of the model's overall performance on imbalanced datasets.
+
+- "Plastic Bottle" class: The F1-score for the "Plastic Bottle" class is 96%, signifying a robust performance that considers both precision and recall for this category.
+- "Can" class: The F1-score for the "Can" class is 93%, which considers both precision and recall, resulting in a balanced measure of the model's performance for this class.
+- "Glass Bottle" class: The F1-score for the "Glass Bottle" class is 91%, indicating a well-balanced performance of the model for this category.
+- "Cardboard" class: The F1-score for the "Cardboard" class is 84%, reflecting the model's overall performance for this class, accounting for precision and recall.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/F1 score.png}
+\caption{Model F1-score. The "plastic bottle" class has the highest F1-score of 96\% followed by the "can class" at 93\%, then the "glass bottle class" at 91\%, and last the "cardboard class" with 84\%.}
+\end{figure}
+
+Table: Summary of the performance metrics for object classification.
+
+| Metric | Can | Cardboard | Glass bottle | Plastic Bottle
+|-|-|-|-|-|
+| Precision | 91% | 88% | 88% | 98% |
+| Recall | 94% | 80% | 94% | 94% |
+| F1-Score | 93% | 84% | 91% | 96% |
+| Support | 153 | 89 | 138 | 172 |
+
+\newpage
+
+## Shiny for Python App
+The proposed solution is an App Recycle Classifier, which uses image classification for categorizing the Object. The application utilizes a camera-based system to classify recyclable objects. By capturing an image, the model can identify the object and provide guidance on the appropriate drop-off location for potential refunds, if applicable. This technology simplifies the recycling process by accurately categorizing items and directing users to the most suitable recycling points.  
+
+The presented Python application is an interactive and user-friendly platform that allows users to classify objects in images and explore their locations on a map. The application is built using Shiny for Python, a web framework for creating data visualization apps.  
+
+The app consists of three main sections: "App Information," "Request Submission," and "Map." In the "App Information" section, general details about the application and its purpose are displayed, providing users with a brief introduction.  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/1. app.png}
+\caption{Step 1 - App Information.}
+\end{figure}
+
+\newpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/2.1. app.png}
+\caption{Step 2 - Request Submission.}
+\end{figure}
+
+In the "Request Submission" section, users can easily upload images by clicking the "Open camera" button. After uploading an image, the app uses the trained neural network model to predict what type of object is in the image.  
+
+The results are presented in the form of a simple bar chart, indicating the probabilities of the image containing a "Can," "Cardboard," "Glass bottle," or "Plastic Bottle." This visual representation helps users understand the classification results quickly and intuitively.  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/3. app.png}
+\caption{Step 2.1 - Model Classification Results.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{D:/Study/St. Clair College/Data Analytics/4th Semester/DAB422 Capstone Project 2/Document/Capstone Project/5. app.png}
+\caption{Step 3 - Map.}
+\end{figure}
+
+The "Map" section provides an interactive experience, allowing users to choose different map styles, such as "OpenStreetMap" or "Satellite." The map is cantered at a specific location, and a marker is placed there. Users can explore different areas and get a better understanding of the geographical context of the images they upload. 
+
+Overall, this application is designed to be user-friendly and intuitive, catering to a wide range of users, regardless of their technical expertise. It enables users to easily classify objects in images, understand the prediction results, and visualize the geographical locations related to the images. The simplicity and functionality of the Shiny framework make it an excellent choice for developing such interactive data visualization apps.  
+
+\newpage
+
+# Conclusion
+
+During the development of the object classification application, extensive experimentation was conducted with various CNN models, each featuring different numbers of CNN layers. Through rigorous evaluation, the best-performing model was identified, achieving an impressive accuracy of 94% on the validation dataset. This model was deemed highly suitable for the prototype application. Subsequently, the chosen CNN model was integrated into the object classification system, yielding remarkable results with a significantly high level of accuracy in classifying objects into four distinct categories: glass bottles, tin cans, plastic bottles, and cardboard.
+
+To ensure a transparent and interactive user experience, an intuitive interface was implemented, displaying uploaded images alongside their corresponding classifications. This feature empowers users to validate the classifications and gain confidence in the system's accuracy. The successful object classification capabilities of the application highlight its potential in real-world scenarios, including waste management, recycling initiatives, and inventory management systems. The accuracy and reliability of the model contribute to the application's value and efficacy in various industries.
+
+In conclusion, the prototype application is built upon a CNN-based object classification model with a remarkable accuracy of 94%. The integration of an interactive user interface further enhances user engagement and trust in the system's classification results. With such promising outcomes, confidence exists in the application's potential to revolutionize object classification tasks across diverse domains.
+
+# Acknowledgements  
+
+We would like to express our heartfelt gratitude to be part of the [Data Analytics for Business](https://www.stclaircollege.ca/programs/data-analytics-business) program at [St. Clair College](https://www.stclaircollege.ca/). This program has been an invaluable journey that provided us with the knowledge and skills to undertake this project successfully.
+
+We are immensely thankful to the program faculty, especially Professors Umair Durrani, Manjari Maheshwari, and Pratik Bedi, for their constant guidance, support, and mentorship throughout the project's inception. Their expertise, encouragement, and dedication have been instrumental in shaping my understanding and passion for data analytics and machine learning.
+
+We extend our sincere appreciation to all the professors who have been part of our professional development as students. Their collective effort and commitment to providing a nurturing learning environment have been pivotal in our growth as aspiring data analysts.
+
+This project would not have been possible without the unwavering support of our fellow classmates who provided several feedbacks to us. Their collaboration and camaraderie have been crucial in overcoming challenges and achieving our goals.
+
+We are privileged to have had the opportunity to be a part of this remarkable academic community and acknowledge the immense influence it has had on our personal and professional development.
+
+\newpage
+
+# References
+
+<!-- The following line generates the bibliography based on the citations -->
+<!-- If using PDF output, this will show as a separate page at the end -->
+<div id="refs"></div>
